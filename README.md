@@ -1,0 +1,2 @@
+# Einstoss
+Trading Algo
