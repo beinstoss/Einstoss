@@ -1,2 +1,2 @@
 # Einstoss
-Trading Algo
+Fuck u give me my money
