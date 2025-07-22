@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom margin classes for layout */
+.ml-128 {
+  margin-left: 32rem; /* 64 (sidebar) + 16rem (256px for application selector) */
+}
