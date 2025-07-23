@@ -10,19 +10,19 @@ class QueryService:
     
     # Allowed fields for filtering (security measure)
     ALLOWED_FIELDS = {
-        'application_name': Template.application_name,
-        'ssg_team': Template.ssg_team,
-        'recipient_type': Template.recipient_type,
-        'template_name': Template.template_name,
-        'sender': Template.sender,
-        'subject': Template.subject,
-        'body': Template.body,
-        'auto_send': Template.auto_send,
-        'data_as_attachment': Template.data_as_attachment,
-        'created_by': Template.created_by,
-        'creation_time': Template.creation_time,
-        'modified_by': Template.modified_by,
-        'modified_time': Template.modified_time
+        'application_name': Template.ApplicationName,
+        'ssg_team': Template.SsgTeam,
+        'recipient_type': Template.RecipientType,
+        'template_name': Template.TemplateName,
+        'sender': Template.Sender,
+        'subject': Template.Subject,
+        'body': Template.Body,
+        'auto_send': Template.AutoSend,
+        'data_as_attachment': Template.DataAsAttachment,
+        'created_by': Template.CreatedBy,
+        'creation_time': Template.CreationTime,
+        'modified_by': Template.ModifiedBy,
+        'modified_time': Template.ModifiedTime
     }
     
     # Allowed operators for filtering
@@ -70,7 +70,7 @@ class QueryService:
                 }
             
             # Start with base query filtered by accessible applications
-            query = Template.query.filter(Template.application_name.in_(accessible_apps))
+            query = Template.query.filter(Template.ApplicationName.in_(accessible_apps))
             
             # Apply dynamic filters
             if filters:
@@ -85,7 +85,7 @@ class QueryService:
                     query = query.order_by(field.asc())
             else:
                 # Default sorting
-                query = query.order_by(Template.creation_time.desc())
+                query = query.order_by(Template.CreationTime.desc())
             
             # Get total count before pagination
             total = query.count()

@@ -17,130 +17,130 @@ def add_sample_parameters():
         # Sample parameters
         parameters = [
             {
-                'parameter_name': 'ClientName',
-                'description': 'Name of the client',
-                'data_type': 'String',
-                'default_value': 'ABC Corp',
-                'created_by': 'system'
+                'ParameterName': 'ClientName',
+                'Description': 'Name of the client',
+                'DataType': 'String',
+                'DefaultValue': 'ABC Corp',
+                'CreatedBy': 'system'
             },
             {
-                'parameter_name': 'UserName',
-                'description': 'Name of the user receiving the email',
-                'data_type': 'String',
-                'default_value': 'John Doe',
-                'created_by': 'system'
+                'ParameterName': 'UserName',
+                'Description': 'Name of the user receiving the email',
+                'DataType': 'String',
+                'DefaultValue': 'John Doe',
+                'CreatedBy': 'system'
             },
             {
-                'parameter_name': 'RiskLimit',
-                'description': 'Risk threshold limit',
-                'data_type': 'Number',
-                'default_value': '1000000',
-                'created_by': 'system'
+                'ParameterName': 'RiskLimit',
+                'Description': 'Risk threshold limit',
+                'DataType': 'Number',
+                'DefaultValue': '1000000',
+                'CreatedBy': 'system'
             },
             {
-                'parameter_name': 'CurrentRisk',
-                'description': 'Current risk level',
-                'data_type': 'Number',
-                'default_value': '1250000',
-                'created_by': 'system'
+                'ParameterName': 'CurrentRisk',
+                'Description': 'Current risk level',
+                'DataType': 'Number',
+                'DefaultValue': '1250000',
+                'CreatedBy': 'system'
             },
             {
-                'parameter_name': 'AlertDateTime',
-                'description': 'Date and time of the alert',
-                'data_type': 'Date',
-                'default_value': '2024-01-15 14:30:00',
-                'created_by': 'system'
+                'ParameterName': 'AlertDateTime',
+                'Description': 'Date and time of the alert',
+                'DataType': 'Date',
+                'DefaultValue': '2024-01-15 14:30:00',
+                'CreatedBy': 'system'
             },
             {
-                'parameter_name': 'ReportDate',
-                'description': 'Report generation date',
-                'data_type': 'Date',
-                'default_value': '2024-01-15',
-                'created_by': 'system'
+                'ParameterName': 'ReportDate',
+                'Description': 'Report generation date',
+                'DataType': 'Date',
+                'DefaultValue': '2024-01-15',
+                'CreatedBy': 'system'
             },
             {
-                'parameter_name': 'TotalPositions',
-                'description': 'Total number of positions',
-                'data_type': 'Number',
-                'default_value': '150',
-                'created_by': 'system'
+                'ParameterName': 'TotalPositions',
+                'Description': 'Total number of positions',
+                'DataType': 'Number',
+                'DefaultValue': '150',
+                'CreatedBy': 'system'
             },
             {
-                'parameter_name': 'HighRiskCount',
-                'description': 'Number of high risk positions',
-                'data_type': 'Number',
-                'default_value': '25',
-                'created_by': 'system'
+                'ParameterName': 'HighRiskCount',
+                'Description': 'Number of high risk positions',
+                'DataType': 'Number',
+                'DefaultValue': '25',
+                'CreatedBy': 'system'
             },
             {
-                'parameter_name': 'AlertCount',
-                'description': 'Number of alerts generated',
-                'data_type': 'Number',
-                'default_value': '12',
-                'created_by': 'system'
+                'ParameterName': 'AlertCount',
+                'Description': 'Number of alerts generated',
+                'DataType': 'Number',
+                'DefaultValue': '12',
+                'CreatedBy': 'system'
             },
             {
-                'parameter_name': 'SystemName',
-                'description': 'Name of the system',
-                'data_type': 'String',
-                'default_value': 'RiskTech Platform',
-                'created_by': 'system'
+                'ParameterName': 'SystemName',
+                'Description': 'Name of the system',
+                'DataType': 'String',
+                'DefaultValue': 'RiskTech Platform',
+                'CreatedBy': 'system'
             },
             {
-                'parameter_name': 'MaintenanceDate',
-                'description': 'Scheduled maintenance date',
-                'data_type': 'Date',
-                'default_value': '2024-01-20',
-                'created_by': 'system'
+                'ParameterName': 'MaintenanceDate',
+                'Description': 'Scheduled maintenance date',
+                'DataType': 'Date',
+                'DefaultValue': '2024-01-20',
+                'CreatedBy': 'system'
             },
             {
-                'parameter_name': 'StartTime',
-                'description': 'Maintenance start time',
-                'data_type': 'String',
-                'default_value': '02:00 AM EST',
-                'created_by': 'system'
+                'ParameterName': 'StartTime',
+                'Description': 'Maintenance start time',
+                'DataType': 'String',
+                'DefaultValue': '02:00 AM EST',
+                'CreatedBy': 'system'
             },
             {
-                'parameter_name': 'EndTime',
-                'description': 'Maintenance end time',
-                'data_type': 'String',
-                'default_value': '06:00 AM EST',
-                'created_by': 'system'
+                'ParameterName': 'EndTime',
+                'Description': 'Maintenance end time',
+                'DataType': 'String',
+                'DefaultValue': '06:00 AM EST',
+                'CreatedBy': 'system'
             },
             {
-                'parameter_name': 'Duration',
-                'description': 'Expected downtime duration',
-                'data_type': 'String',
-                'default_value': '4 hours',
-                'created_by': 'system'
+                'ParameterName': 'Duration',
+                'Description': 'Expected downtime duration',
+                'DataType': 'String',
+                'DefaultValue': '4 hours',
+                'CreatedBy': 'system'
             },
             {
-                'parameter_name': 'TradeID',
-                'description': 'Unique trade identifier',
-                'data_type': 'String',
-                'default_value': 'TRD-2024-001234',
-                'created_by': 'system'
+                'ParameterName': 'TradeID',
+                'Description': 'Unique trade identifier',
+                'DataType': 'String',
+                'DefaultValue': 'TRD-2024-001234',
+                'CreatedBy': 'system'
             },
             {
-                'parameter_name': 'TradeAmount',
-                'description': 'Trade amount',
-                'data_type': 'Number',
-                'default_value': '500000',
-                'created_by': 'system'
+                'ParameterName': 'TradeAmount',
+                'Description': 'Trade amount',
+                'DataType': 'Number',
+                'DefaultValue': '500000',
+                'CreatedBy': 'system'
             },
             {
-                'parameter_name': 'SettlementDate',
-                'description': 'Trade settlement date',
-                'data_type': 'Date',
-                'default_value': '2024-01-17',
-                'created_by': 'system'
+                'ParameterName': 'SettlementDate',
+                'Description': 'Trade settlement date',
+                'DataType': 'Date',
+                'DefaultValue': '2024-01-17',
+                'CreatedBy': 'system'
             },
             {
-                'parameter_name': 'FailureReason',
-                'description': 'Reason for settlement failure',
-                'data_type': 'String',
-                'default_value': 'Insufficient funds',
-                'created_by': 'system'
+                'ParameterName': 'FailureReason',
+                'Description': 'Reason for settlement failure',
+                'DataType': 'String',
+                'DefaultValue': 'Insufficient funds',
+                'CreatedBy': 'system'
             }
         ]
         
@@ -154,8 +154,8 @@ def add_sample_parameters():
         total_params = Parameter.query.count()
         print(f"✅ Successfully added {total_params} sample parameters")
         print("\nSample parameters:")
-        for param in Parameter.query.order_by(Parameter.parameter_name).all():
-            print(f"   - @@{param.parameter_name} ({param.data_type}): {param.description}")
+        for param in Parameter.query.order_by(Parameter.ParameterName).all():
+            print(f"   - @@{param.ParameterName} ({param.DataType}): {param.Description}")
 
 if __name__ == '__main__':
     add_sample_parameters()

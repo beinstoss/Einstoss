@@ -18,13 +18,13 @@ def add_test_templates():
         # Test templates data
         test_templates = [
             {
-                'application_name': 'RDB',
-                'ssg_team': 'Risk Management',
-                'recipient_type': 'Client',
-                'template_name': 'Risk Alert - High Priority',
-                'sender': 'risk.alerts@company.com',
-                'subject': 'URGENT: Risk Threshold Exceeded for @@ClientName',
-                'body': '''Dear @@UserName,
+                'ApplicationName': 'RDB',
+                'SsgTeam': 'Risk Management',
+                'RecipientType': 'Client',
+                'TemplateName': 'Risk Alert - High Priority',
+                'Sender': 'risk.alerts@company.com',
+                'Subject': 'URGENT: Risk Threshold Exceeded for @@ClientName',
+                'Body': '''Dear @@UserName,
 
 This is to inform you that @@ClientName has exceeded the risk threshold of @@RiskLimit.
 
@@ -36,18 +36,18 @@ Please review the attached risk report and take appropriate action.
 
 Best regards,
 Risk Management Team''',
-                'auto_send': False,
-                'data_as_attachment': True,
-                'created_by': 'john.smith@company.com'
+                'AutoSend': False,
+                'DataAsAttachment': True,
+                'CreatedBy': 'john.smith@company.com'
             },
             {
-                'application_name': 'RDB',
-                'ssg_team': 'Compliance',
-                'recipient_type': 'Internal',
-                'template_name': 'Daily Risk Report',
-                'sender': 'compliance@company.com',
-                'subject': 'Daily Risk Report - @@ReportDate',
-                'body': '''Risk Management Team,
+                'ApplicationName': 'RDB',
+                'SsgTeam': 'Compliance',
+                'RecipientType': 'Internal',
+                'TemplateName': 'Daily Risk Report',
+                'Sender': 'compliance@company.com',
+                'Subject': 'Daily Risk Report - @@ReportDate',
+                'Body': '''Risk Management Team,
 
 Please find the daily risk report for @@ReportDate.
 
@@ -59,18 +59,18 @@ Summary:
 The detailed report is attached.
 
 Compliance Team''',
-                'auto_send': True,
-                'data_as_attachment': True,
-                'created_by': 'compliance.team@company.com'
+                'AutoSend': True,
+                'DataAsAttachment': True,
+                'CreatedBy': 'compliance.team@company.com'
             },
             {
-                'application_name': 'RISKTECH',
-                'ssg_team': 'Technology',
-                'recipient_type': 'Client',
-                'template_name': 'System Maintenance Notification',
-                'sender': 'tech.support@company.com',
-                'subject': 'Scheduled Maintenance - @@SystemName on @@MaintenanceDate',
-                'body': '''Dear @@ClientName,
+                'ApplicationName': 'RISKTECH',
+                'SsgTeam': 'Technology',
+                'RecipientType': 'Client',
+                'TemplateName': 'System Maintenance Notification',
+                'Sender': 'tech.support@company.com',
+                'Subject': 'Scheduled Maintenance - @@SystemName on @@MaintenanceDate',
+                'Body': '''Dear @@ClientName,
 
 We will be performing scheduled maintenance on @@SystemName.
 
@@ -84,18 +84,18 @@ During this period, @@SystemName will be unavailable.
 We apologize for any inconvenience.
 
 Technical Support Team''',
-                'auto_send': False,
-                'data_as_attachment': False,
-                'created_by': 'tech.admin@company.com'
+                'AutoSend': False,
+                'DataAsAttachment': False,
+                'CreatedBy': 'tech.admin@company.com'
             },
             {
-                'application_name': 'RISKTECH',
-                'ssg_team': 'Operations',
-                'recipient_type': 'Internal',
-                'template_name': 'Trade Settlement Failure',
-                'sender': 'operations@company.com',
-                'subject': 'Settlement Failure Alert - Trade @@TradeID',
-                'body': '''Operations Team,
+                'ApplicationName': 'RISKTECH',
+                'SsgTeam': 'Operations',
+                'RecipientType': 'Internal',
+                'TemplateName': 'Trade Settlement Failure',
+                'Sender': 'operations@company.com',
+                'Subject': 'Settlement Failure Alert - Trade @@TradeID',
+                'Body': '''Operations Team,
 
 A trade settlement failure has occurred:
 
@@ -109,18 +109,18 @@ Trade Details:
 Please investigate and resolve immediately.
 
 Operations Team''',
-                'auto_send': True,
-                'data_as_attachment': False,
-                'created_by': 'ops.manager@company.com'
+                'AutoSend': True,
+                'DataAsAttachment': False,
+                'CreatedBy': 'ops.manager@company.com'
             },
             {
-                'application_name': 'OTHER',
-                'ssg_team': 'HR',
-                'recipient_type': 'Employee',
-                'template_name': 'Welcome New Employee',
-                'sender': 'hr@company.com',
-                'subject': 'Welcome to the Team, @@EmployeeName!',
-                'body': '''Dear @@EmployeeName,
+                'ApplicationName': 'OTHER',
+                'SsgTeam': 'HR',
+                'RecipientType': 'Employee',
+                'TemplateName': 'Welcome New Employee',
+                'Sender': 'hr@company.com',
+                'Subject': 'Welcome to the Team, @@EmployeeName!',
+                'Body': '''Dear @@EmployeeName,
 
 Welcome to @@CompanyName! We are excited to have you join our @@Department team.
 
@@ -135,9 +135,9 @@ Please arrive 30 minutes early for your IT setup and orientation.
 We look forward to working with you!
 
 HR Team''',
-                'auto_send': False,
-                'data_as_attachment': False,
-                'created_by': 'hr.admin@company.com'
+                'AutoSend': False,
+                'DataAsAttachment': False,
+                'CreatedBy': 'hr.admin@company.com'
             }
         ]
         
@@ -150,9 +150,9 @@ HR Team''',
         
         # Verify data was added
         total_templates = Template.query.count()
-        rdb_count = Template.query.filter_by(application_name='RDB').count()
-        risktech_count = Template.query.filter_by(application_name='RISKTECH').count()
-        other_count = Template.query.filter_by(application_name='OTHER').count()
+        rdb_count = Template.query.filter_by(ApplicationName='RDB').count()
+        risktech_count = Template.query.filter_by(ApplicationName='RISKTECH').count()
+        other_count = Template.query.filter_by(ApplicationName='OTHER').count()
         
         print(f"✅ Successfully added {total_templates} test templates:")
         print(f"   - RDB: {rdb_count}")

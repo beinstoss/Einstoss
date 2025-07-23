@@ -1,19 +1,41 @@
 from flask import Blueprint, request, jsonify
 from app.models.template import Template
+from app.services.auth_service import AuthService
+from app.services.audit_service import AuditService
 from app import db
 
 templates_bp = Blueprint('templates', __name__)
 
+def get_user_entitlements():
+    """
+    Extract user entitlements from request headers or JWT token
+    For now, return empty list - this should be implemented based on your auth system
+    """
+    # TODO: Implement based on your authentication system
+    return request.headers.get('X-User-Entitlements', '').split(',') if request.headers.get('X-User-Entitlements') else []
+
 @templates_bp.route('/', methods=['GET'])
 def get_templates():
-    """Get templates with optional application filter"""
+    """Get templates with optional application filter (only for approved/active applications)"""
     try:
+        user_entitlements = get_user_entitlements()
         application = request.args.get('application')
         
+        # Get applications user has access to (filtered by approved/active apps)
+        accessible_apps = AuthService.get_user_applications(user_entitlements, 'read')
+        
+        if not accessible_apps:
+            return jsonify([])  # No access to any applications
+        
         if application:
-            templates = Template.query.filter_by(application_name=application).all()
+            # Check if user has access to the specific application
+            if not AuthService.has_application_access(user_entitlements, application, 'read'):
+                return jsonify({'error': 'Access denied to this application'}), 403
+            
+            templates = Template.query.filter_by(ApplicationName=application).all()
         else:
-            templates = Template.query.all()
+            # Return templates only for accessible applications
+            templates = Template.query.filter(Template.ApplicationName.in_(accessible_apps)).all()
         
         return jsonify([template.to_dict() for template in templates])
     except Exception as e:
@@ -21,24 +43,45 @@ def get_templates():
 
 @templates_bp.route('/', methods=['POST'])
 def create_template():
-    """Create a new template"""
+    """Create a new template (with application approval validation)"""
     try:
+        user_entitlements = get_user_entitlements()
         data = request.get_json()
+        application_name = data.get('applicationName')
+        
+        if not application_name:
+            return jsonify({'error': 'Application name is required'}), 400
+        
+        # Check if user can create templates for this application
+        if not AuthService.can_create_template_for_application(user_entitlements, application_name):
+            return jsonify({
+                'error': 'Access denied. Only administrators can create templates for new applications, or the application must be approved.'
+            }), 403
+        
+        # Check write access for non-admin users
+        if not AuthService.is_admin(user_entitlements):
+            if not AuthService.has_application_access(user_entitlements, application_name, 'write'):
+                return jsonify({'error': 'Write access denied for this application'}), 403
         
         template = Template(
-            application_name=data.get('applicationName'),
-            ssg_team=data.get('ssgTeam'),
-            recipient_type=data.get('recipientType'),
-            template_name=data.get('templateName'),
-            sender=data.get('sender'),
-            subject=data.get('subject'),
-            body=data.get('body'),
-            auto_send=data.get('autoSend', False),
-            data_as_attachment=data.get('dataAsAttachment', False),
-            created_by=data.get('createdBy', 'system')
+            ApplicationName=application_name,
+            SsgTeam=data.get('ssgTeam'),
+            RecipientType=data.get('recipientType'),
+            TemplateName=data.get('templateName'),
+            Sender=data.get('sender'),
+            Subject=data.get('subject'),
+            Body=data.get('body'),
+            AutoSend=data.get('autoSend', False),
+            DataAsAttachment=data.get('dataAsAttachment', False),
+            CreatedBy=request.headers.get('X-User-ID', 'system')
         )
         
         db.session.add(template)
+        db.session.flush()  # Get the template ID before audit
+        
+        # Log template creation
+        AuditService.log_template_insert(template)
+        
         db.session.commit()
         
         return jsonify(template.to_dict()), 201
@@ -48,31 +91,59 @@ def create_template():
 
 @templates_bp.route('/<template_id>', methods=['GET'])
 def get_template(template_id):
-    """Get a specific template by ID"""
+    """Get a specific template by ID (only for approved/active applications)"""
     try:
+        user_entitlements = get_user_entitlements()
         template = Template.query.get_or_404(template_id)
+        
+        # Check if user has access to this template's application
+        if not AuthService.has_application_access(user_entitlements, template.ApplicationName, 'read'):
+            return jsonify({'error': 'Access denied to this application'}), 403
+        
         return jsonify(template.to_dict())
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
 @templates_bp.route('/<template_id>', methods=['PUT'])
 def update_template(template_id):
-    """Update an existing template"""
+    """Update an existing template (only for approved/active applications)"""
     try:
+        user_entitlements = get_user_entitlements()
         template = Template.query.get_or_404(template_id)
+        
+        # Check if user has write access to this template's application
+        if not AuthService.has_application_access(user_entitlements, template.ApplicationName, 'write'):
+            return jsonify({'error': 'Write access denied for this application'}), 403
+        
         data = request.get_json()
         
+        # Capture original values for audit
+        original_values = {
+            'ApplicationName': template.ApplicationName,
+            'SsgTeam': template.SsgTeam,
+            'RecipientType': template.RecipientType,
+            'TemplateName': template.TemplateName,
+            'Sender': template.Sender,
+            'Subject': template.Subject,
+            'Body': template.Body,
+            'AutoSend': template.AutoSend,
+            'DataAsAttachment': template.DataAsAttachment
+        }
+        
         # Update template fields
-        template.ssg_team = data.get('ssgTeam', template.ssg_team)
-        template.recipient_type = data.get('recipientType', template.recipient_type)
-        template.template_name = data.get('templateName', template.template_name)
-        template.sender = data.get('sender', template.sender)
-        template.subject = data.get('subject', template.subject)
-        template.body = data.get('body', template.body)
-        template.auto_send = data.get('autoSend', template.auto_send)
-        template.data_as_attachment = data.get('dataAsAttachment', template.data_as_attachment)
-        template.modified_by = data.get('modifiedBy', 'system')
-        template.modified_time = db.func.now()
+        template.SsgTeam = data.get('ssgTeam', template.SsgTeam)
+        template.RecipientType = data.get('recipientType', template.RecipientType)
+        template.TemplateName = data.get('templateName', template.TemplateName)
+        template.Sender = data.get('sender', template.Sender)
+        template.Subject = data.get('subject', template.Subject)
+        template.Body = data.get('body', template.Body)
+        template.AutoSend = data.get('autoSend', template.AutoSend)
+        template.DataAsAttachment = data.get('dataAsAttachment', template.DataAsAttachment)
+        template.ModifiedBy = request.headers.get('X-User-ID', 'system')
+        template.ModifiedTime = db.func.now()
+        
+        # Log template update
+        AuditService.log_template_update(template, original_values)
         
         db.session.commit()
         
@@ -83,9 +154,17 @@ def update_template(template_id):
 
 @templates_bp.route('/<template_id>', methods=['DELETE'])
 def delete_template(template_id):
-    """Delete a template"""
+    """Delete a template (only for approved/active applications)"""
     try:
+        user_entitlements = get_user_entitlements()
         template = Template.query.get_or_404(template_id)
+        
+        # Check if user has write access to this template's application
+        if not AuthService.has_application_access(user_entitlements, template.ApplicationName, 'write'):
+            return jsonify({'error': 'Write access denied for this application'}), 403
+        
+        # Log template deletion before removing it
+        AuditService.log_template_delete(template)
         
         db.session.delete(template)
         db.session.commit()
@@ -97,26 +176,41 @@ def delete_template(template_id):
 
 @templates_bp.route('/<template_id>/duplicate', methods=['POST'])
 def duplicate_template(template_id):
-    """Create a duplicate of an existing template"""
+    """Create a duplicate of an existing template (only for approved/active applications)"""
     try:
+        user_entitlements = get_user_entitlements()
         original = Template.query.get_or_404(template_id)
+        
+        # Check if user has read access to the original template's application
+        if not AuthService.has_application_access(user_entitlements, original.ApplicationName, 'read'):
+            return jsonify({'error': 'Read access denied for this application'}), 403
+        
+        # Check if user has write access to create new template (same application)
+        if not AuthService.has_application_access(user_entitlements, original.ApplicationName, 'write'):
+            return jsonify({'error': 'Write access denied for this application'}), 403
+        
         data = request.get_json()
         
         # Create new template based on original
         duplicate = Template(
-            application_name=original.application_name,
-            ssg_team=original.ssg_team,
-            recipient_type=original.recipient_type,
-            template_name=data.get('templateName', f"{original.template_name} (Copy)"),
-            sender=original.sender,
-            subject=original.subject,
-            body=original.body,
-            auto_send=original.auto_send,
-            data_as_attachment=original.data_as_attachment,
-            created_by=data.get('createdBy', 'system')
+            ApplicationName=original.ApplicationName,
+            SsgTeam=original.SsgTeam,
+            RecipientType=original.RecipientType,
+            TemplateName=data.get('templateName', f"{original.TemplateName} (Copy)"),
+            Sender=original.Sender,
+            Subject=original.Subject,
+            Body=original.Body,
+            AutoSend=original.AutoSend,
+            DataAsAttachment=original.DataAsAttachment,
+            CreatedBy=request.headers.get('X-User-ID', 'system')
         )
         
         db.session.add(duplicate)
+        db.session.flush()  # Get the duplicate ID before audit
+        
+        # Log duplicate template creation
+        AuditService.log_template_insert(duplicate)
+        
         db.session.commit()
         
         return jsonify(duplicate.to_dict()), 201

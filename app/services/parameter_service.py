@@ -6,24 +6,24 @@ class ParameterService:
     @staticmethod
     def get_all_parameters():
         """Get all active parameters"""
-        parameters = Parameter.query.filter_by(is_active=True).order_by(Parameter.parameter_name).all()
+        parameters = Parameter.query.filter_by(IsActive=True).order_by(Parameter.ParameterName).all()
         return [param.to_dict() for param in parameters]
     
     @staticmethod
     def get_parameters_for_autocomplete(search_term=None):
         """Get parameters formatted for autocomplete dropdown"""
-        query = Parameter.query.filter_by(is_active=True)
+        query = Parameter.query.filter_by(IsActive=True)
         
         if search_term:
-            query = query.filter(Parameter.parameter_name.ilike(f'%{search_term}%'))
+            query = query.filter(Parameter.ParameterName.ilike(f'%{search_term}%'))
         
-        parameters = query.order_by(Parameter.parameter_name).limit(10).all()
+        parameters = query.order_by(Parameter.ParameterName).limit(10).all()
         
         return [{
-            'value': param.parameter_name,
-            'label': param.parameter_name,
-            'description': param.description,
-            'dataType': param.data_type
+            'value': param.ParameterName,
+            'label': param.ParameterName,
+            'description': param.Description,
+            'dataType': param.DataType
         } for param in parameters]
     
     @staticmethod
@@ -40,7 +40,7 @@ class ParameterService:
             return True, []
         
         # Get all valid parameter names
-        valid_parameters = {param.parameter_name for param in Parameter.query.filter_by(is_active=True).all()}
+        valid_parameters = {param.ParameterName for param in Parameter.query.filter_by(IsActive=True).all()}
         
         # Check for invalid parameters
         invalid_parameters = [param for param in found_parameters if param not in valid_parameters]
