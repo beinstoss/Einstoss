@@ -25,7 +25,7 @@ class ParameterService:
             'value': param.ParameterName,
             'label': param.ParameterName,
             'description': param.Description,
-            'dataType': param.DataType
+            'DataType': param.DataType
         } for param in parameters]
     
     @staticmethod

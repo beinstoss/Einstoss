@@ -18,16 +18,16 @@ class Parameter(db.Model):
     
     def to_dict(self):
         return {
-            'id': self.ParameterId,
-            'name': self.ParameterName,
-            'description': self.Description,
-            'dataType': self.DataType,
-            'defaultValue': self.DefaultValue,
-            'isActive': self.IsActive,
-            'createdBy': self.CreatedBy,
-            'creationTime': self.CreationTime.isoformat(),
-            'modifiedBy': self.ModifiedBy,
-            'modifiedTime': self.ModifiedTime.isoformat() if self.ModifiedTime else None
+            'Id': self.ParameterId,
+            'Name': self.ParameterName,
+            'Description': self.Description,
+            'DataType': self.DataType,
+            'DefaultValue': self.DefaultValue,
+            'IsActive': self.IsActive,
+            'CreatedBy': self.CreatedBy,
+            'CreationTime': self.CreationTime.isoformat(),
+            'ModifiedBy': self.ModifiedBy,
+            'ModifiedTime': self.ModifiedTime.isoformat() if self.ModifiedTime else None
         }
 
 class FormFieldConfiguration(db.Model):
@@ -56,15 +56,15 @@ class FormFieldConfiguration(db.Model):
     
     def to_dict(self):
         return {
-            'id': self.ConfigId,
-            'applicationName': self.ApplicationName,
-            'fieldName': self.FieldName,
-            'fieldType': self.FieldType,
-            'fieldLabel': self.FieldLabel,
-            'isRequired': self.IsRequired,
-            'allowMultiSelect': self.AllowMultiSelect,
-            'sortOrder': self.SortOrder,
-            'isActive': self.IsActive,
+            'Id': self.ConfigId,
+            'ApplicationName': self.ApplicationName,
+            'FieldName': self.FieldName,
+            'FieldType': self.FieldType,
+            'FieldLabel': self.FieldLabel,
+            'IsRequired': self.IsRequired,
+            'AllowMultiSelect': self.AllowMultiSelect,
+            'SortOrder': self.SortOrder,
+            'IsActive': self.IsActive,
             'options': [option.to_dict() for option in self.options.filter_by(IsActive=True).order_by('SortOrder')]
         }
 
@@ -80,8 +80,8 @@ class FormFieldOption(db.Model):
     
     def to_dict(self):
         return {
-            'id': self.OptionId,
-            'value': self.OptionValue,
-            'text': self.OptionText,
-            'sortOrder': self.SortOrder
+            'Id': self.OptionId,
+            'Value': self.OptionValue,
+            'Text': self.OptionText,
+            'SortOrder': self.SortOrder
         }

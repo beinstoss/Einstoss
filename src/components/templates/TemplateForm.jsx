@@ -14,21 +14,21 @@ const TemplateForm = ({ applicationName, template, onClose, onSuccess }) => {
 
   const { register, handleSubmit, formState: { errors }, setValue, watch } = useForm({
     defaultValues: {
-      templateName: template?.templateName || '',
-      ssgTeam: template?.ssgTeam || '',
-      recipientType: template?.recipientType || '',
-      sender: template?.sender || '',
-      subject: template?.subject || '',
-      body: template?.body || '',
-      autoSend: template?.autoSend || false,
-      dataAsAttachment: template?.dataAsAttachment || false,
+      TemplateName: template?.TemplateName || '',
+      SsgTeam: template?.SsgTeam || '',
+      RecipientType: template?.RecipientType || '',
+      Sender: template?.Sender || '',
+      Subject: template?.Subject || '',
+      Body: template?.Body || '',
+      AutoSend: template?.AutoSend || false,
+      DataAsAttachment: template?.DataAsAttachment || false,
       ...template // Spread any additional fields from template
     },
   });
 
   // Watch subject and body for parameter validation
-  const subject = watch('subject');
-  const body = watch('body');
+  const subject = watch('Subject');
+  const body = watch('Body');
 
   // Validate parameters without useEffect - use callback approach
   const validateParameters = useCallback(async (text) => {
@@ -51,12 +51,12 @@ const TemplateForm = ({ applicationName, template, onClose, onSuccess }) => {
 
   // Debounced validation - triggered by input changes
   const handleSubjectChange = useCallback((value) => {
-    setValue('subject', value);
+    setValue('Subject', value);
     validateParameters(`${value} ${body}`);
   }, [setValue, body, validateParameters]);
 
   const handleBodyChange = useCallback((value) => {
-    setValue('body', value);
+    setValue('Body', value);
     validateParameters(`${subject} ${value}`);
   }, [setValue, subject, validateParameters]);
 
@@ -138,31 +138,31 @@ const TemplateForm = ({ applicationName, template, onClose, onSuccess }) => {
                   Template Name <span className="text-red-500">*</span>
                 </label>
                 <input
-                  {...register('templateName', { required: 'Template name is required' })}
+                  {...register('TemplateName', { required: 'Template name is required' })}
                   className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   disabled={isLoading}
                 />
-                {errors.templateName && (
-                  <p className="mt-1 text-sm text-red-600">{errors.templateName.message}</p>
+                {errors.TemplateName && (
+                  <p className="mt-1 text-sm text-red-600">{errors.TemplateName.message}</p>
                 )}
               </div>
 
               {/* Dynamic SSG Team Field */}
-              {renderDynamicField('ssgTeam')}
+              {renderDynamicField('SsgTeam')}
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {/* Dynamic Recipient Type Field */}
-              {renderDynamicField('recipientType')}
+              {renderDynamicField('RecipientType')}
 
               {/* Dynamic Sender Field */}
-              {renderDynamicField('sender') || (
+              {renderDynamicField('Sender') || (
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
                     Sender <span className="text-red-500">*</span>
                   </label>
                   <input
-                    {...register('sender', { 
+                    {...register('Sender', { 
                       required: 'Sender is required',
                       pattern: {
                         value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
@@ -173,8 +173,8 @@ const TemplateForm = ({ applicationName, template, onClose, onSuccess }) => {
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                     disabled={isLoading}
                   />
-                  {errors.sender && (
-                    <p className="mt-1 text-sm text-red-600">{errors.sender.message}</p>
+                  {errors.Sender && (
+                    <p className="mt-1 text-sm text-red-600">{errors.Sender.message}</p>
                   )}
                 </div>
               )}
@@ -191,8 +191,8 @@ const TemplateForm = ({ applicationName, template, onClose, onSuccess }) => {
                 placeholder="Enter email subject... (Type @@ for parameters)"
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 min-h-[40px] resize-none"
               />
-              {errors.subject && (
-                <p className="mt-1 text-sm text-red-600">{errors.subject.message}</p>
+              {errors.Subject && (
+                <p className="mt-1 text-sm text-red-600">{errors.Subject.message}</p>
               )}
             </div>
 
@@ -207,8 +207,8 @@ const TemplateForm = ({ applicationName, template, onClose, onSuccess }) => {
                 placeholder="Enter email body... (Type @@ for parameters)"
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
-              {errors.body && (
-                <p className="mt-1 text-sm text-red-600">{errors.body.message}</p>
+              {errors.Body && (
+                <p className="mt-1 text-sm text-red-600">{errors.Body.message}</p>
               )}
             </div>
 
@@ -240,7 +240,7 @@ const TemplateForm = ({ applicationName, template, onClose, onSuccess }) => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="flex items-center">
                 <input
-                  {...register('autoSend')}
+                  {...register('AutoSend')}
                   type="checkbox"
                   className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
                   disabled={isLoading}
@@ -252,7 +252,7 @@ const TemplateForm = ({ applicationName, template, onClose, onSuccess }) => {
 
               <div className="flex items-center">
                 <input
-                  {...register('dataAsAttachment')}
+                  {...register('DataAsAttachment')}
                   type="checkbox"
                   className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
                   disabled={isLoading}
@@ -266,7 +266,7 @@ const TemplateForm = ({ applicationName, template, onClose, onSuccess }) => {
             {/* Render any additional dynamic fields */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {formConfig
-                .filter(config => !['ssgTeam', 'recipientType', 'sender'].includes(config.fieldName))
+                .filter(config => !['SsgTeam', 'RecipientType', 'Sender'].includes(config.fieldName))
                 .map(config => (
                   <div key={config.fieldName}>
                     {renderDynamicField(config.fieldName)}

@@ -33,7 +33,7 @@ def get_form_configuration():
                                              .all()
         
         return jsonify({
-            'applicationName': application,
+            'ApplicationName': application,
             'fields': [config.to_dict() for config in configurations]
         })
     except Exception as e:
@@ -45,7 +45,7 @@ def create_form_configuration():
     try:
         user_entitlements = get_user_entitlements()
         data = request.get_json()
-        application_name = data.get('applicationName')
+        application_name = data.get('ApplicationName')
         
         if not application_name:
             return jsonify({'error': 'Application name is required'}), 400
@@ -62,12 +62,12 @@ def create_form_configuration():
         
         config = FormFieldConfiguration(
             ApplicationName=application_name,
-            FieldName=data.get('fieldName'),
-            FieldType=data.get('fieldType'),
-            FieldLabel=data.get('fieldLabel'),
-            IsRequired=data.get('isRequired', False),
-            AllowMultiSelect=data.get('allowMultiSelect', False),
-            SortOrder=data.get('sortOrder', 0),
+            FieldName=data.get('FieldName'),
+            FieldType=data.get('FieldType'),
+            FieldLabel=data.get('FieldLabel'),
+            IsRequired=data.get('IsRequired', False),
+            AllowMultiSelect=data.get('AllowMultiSelect', False),
+            SortOrder=data.get('SortOrder', 0),
             CreatedBy=request.headers.get('X-User-ID', 'system')
         )
         
@@ -79,9 +79,9 @@ def create_form_configuration():
         for opt_data in options_data:
             option = FormFieldOption(
                 ConfigId=config.ConfigId,
-                OptionValue=opt_data.get('value'),
-                OptionText=opt_data.get('text'),
-                SortOrder=opt_data.get('sortOrder', 0)
+                OptionValue=opt_data.get('Value'),
+                OptionText=opt_data.get('Text'),
+                SortOrder=opt_data.get('SortOrder', 0)
             )
             db.session.add(option)
         
@@ -107,11 +107,11 @@ def update_form_configuration(config_id):
         data = request.get_json()
         
         # Update configuration fields
-        config.FieldLabel = data.get('fieldLabel', config.FieldLabel)
-        config.IsRequired = data.get('isRequired', config.IsRequired)
-        config.AllowMultiSelect = data.get('allowMultiSelect', config.AllowMultiSelect)
-        config.SortOrder = data.get('sortOrder', config.SortOrder)
-        config.IsActive = data.get('isActive', config.IsActive)
+        config.FieldLabel = data.get('FieldLabel', config.FieldLabel)
+        config.IsRequired = data.get('IsRequired', config.IsRequired)
+        config.AllowMultiSelect = data.get('AllowMultiSelect', config.AllowMultiSelect)
+        config.SortOrder = data.get('SortOrder', config.SortOrder)
+        config.IsActive = data.get('IsActive', config.IsActive)
         
         # Update options if provided
         if 'options' in data:
@@ -122,9 +122,9 @@ def update_form_configuration(config_id):
             for opt_data in data['options']:
                 option = FormFieldOption(
                     ConfigId=config_id,
-                    OptionValue=opt_data.get('value'),
-                    OptionText=opt_data.get('text'),
-                    SortOrder=opt_data.get('sortOrder', 0)
+                    OptionValue=opt_data.get('Value'),
+                    OptionText=opt_data.get('Text'),
+                    SortOrder=opt_data.get('SortOrder', 0)
                 )
                 db.session.add(option)
         

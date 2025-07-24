@@ -90,17 +90,17 @@ const TemplatesTable = ({ selectedApplication = 'RDB' }) => {
                   <tr key={template.id} className="hover:bg-gray-50">
                     <td className="px-4 py-3">
                       <div className="text-sm font-medium text-gray-900">
-                        {template.templateName}
+                        {template.TemplateName}
                       </div>
                     </td>
                     <td className="px-4 py-3">
-                      <div className="text-sm text-gray-900">{template.ssgTeam}</div>
+                      <div className="text-sm text-gray-900">{template.SsgTeam}</div>
                     </td>
                     <td className="px-4 py-3">
-                      <div className="text-sm text-gray-900">{template.recipientType}</div>
+                      <div className="text-sm text-gray-900">{template.RecipientType}</div>
                     </td>
                     <td className="px-4 py-3">
-                      <div className="text-sm text-gray-900">{template.sender}</div>
+                      <div className="text-sm text-gray-900">{template.Sender}</div>
                     </td>
                     <td className="px-4 py-3 max-w-xs">
                       <div className="text-sm text-gray-900 truncate" title={template.subject}>

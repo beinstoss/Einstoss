@@ -47,7 +47,7 @@ def create_template():
     try:
         user_entitlements = get_user_entitlements()
         data = request.get_json()
-        application_name = data.get('applicationName')
+        application_name = data.get('ApplicationName')
         
         if not application_name:
             return jsonify({'error': 'Application name is required'}), 400
@@ -65,14 +65,14 @@ def create_template():
         
         template = Template(
             ApplicationName=application_name,
-            SsgTeam=data.get('ssgTeam'),
-            RecipientType=data.get('recipientType'),
-            TemplateName=data.get('templateName'),
-            Sender=data.get('sender'),
-            Subject=data.get('subject'),
-            Body=data.get('body'),
-            AutoSend=data.get('autoSend', False),
-            DataAsAttachment=data.get('dataAsAttachment', False),
+            SsgTeam=data.get('SsgTeam'),
+            RecipientType=data.get('RecipientType'),
+            TemplateName=data.get('TemplateName'),
+            Sender=data.get('Sender'),
+            Subject=data.get('Subject'),
+            Body=data.get('Body'),
+            AutoSend=data.get('AutoSend', False),
+            DataAsAttachment=data.get('DataAsAttachment', False),
             CreatedBy=request.headers.get('X-User-ID', 'system')
         )
         
@@ -131,14 +131,14 @@ def update_template(template_id):
         }
         
         # Update template fields
-        template.SsgTeam = data.get('ssgTeam', template.SsgTeam)
-        template.RecipientType = data.get('recipientType', template.RecipientType)
-        template.TemplateName = data.get('templateName', template.TemplateName)
-        template.Sender = data.get('sender', template.Sender)
-        template.Subject = data.get('subject', template.Subject)
-        template.Body = data.get('body', template.Body)
-        template.AutoSend = data.get('autoSend', template.AutoSend)
-        template.DataAsAttachment = data.get('dataAsAttachment', template.DataAsAttachment)
+        template.SsgTeam = data.get('SsgTeam', template.SsgTeam)
+        template.RecipientType = data.get('RecipientType', template.RecipientType)
+        template.TemplateName = data.get('TemplateName', template.TemplateName)
+        template.Sender = data.get('Sender', template.Sender)
+        template.Subject = data.get('Subject', template.Subject)
+        template.Body = data.get('Body', template.Body)
+        template.AutoSend = data.get('AutoSend', template.AutoSend)
+        template.DataAsAttachment = data.get('DataAsAttachment', template.DataAsAttachment)
         template.ModifiedBy = request.headers.get('X-User-ID', 'system')
         template.ModifiedTime = db.func.now()
         
@@ -196,7 +196,7 @@ def duplicate_template(template_id):
             ApplicationName=original.ApplicationName,
             SsgTeam=original.SsgTeam,
             RecipientType=original.RecipientType,
-            TemplateName=data.get('templateName', f"{original.TemplateName} (Copy)"),
+            TemplateName=data.get('TemplateName', f"{original.TemplateName} (Copy)"),
             Sender=original.Sender,
             Subject=original.Subject,
             Body=original.Body,

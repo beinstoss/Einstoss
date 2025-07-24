@@ -22,18 +22,18 @@ class Template(db.Model):
     
     def to_dict(self):
         return {
-            'id': self.EmailTemplateId,
-            'applicationName': self.ApplicationName,
-            'ssgTeam': self.SsgTeam,
-            'recipientType': self.RecipientType,
-            'templateName': self.TemplateName,
-            'sender': self.Sender,
-            'subject': self.Subject,
-            'body': self.Body,
-            'autoSend': self.AutoSend,
-            'dataAsAttachment': self.DataAsAttachment,
-            'createdBy': self.CreatedBy,
-            'creationTime': self.CreationTime.isoformat(),
-            'modifiedBy': self.ModifiedBy,
-            'modifiedTime': self.ModifiedTime.isoformat() if self.ModifiedTime else None
+            'Id': self.EmailTemplateId,
+            'ApplicationName': self.ApplicationName,
+            'SsgTeam': self.SsgTeam,
+            'RecipientType': self.RecipientType,
+            'TemplateName': self.TemplateName,
+            'Sender': self.Sender,
+            'Subject': self.Subject,
+            'Body': self.Body,
+            'AutoSend': self.AutoSend,
+            'DataAsAttachment': self.DataAsAttachment,
+            'CreatedBy': self.CreatedBy,
+            'CreationTime': self.CreationTime.isoformat(),
+            'ModifiedBy': self.ModifiedBy,
+            'ModifiedTime': self.ModifiedTime.isoformat() if self.ModifiedTime else None
         }

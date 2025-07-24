@@ -2,15 +2,15 @@ import React from 'react';
 
 const FormFieldsView = () => {
   const formFields = [
-    { name: 'applicationName', type: 'text', label: 'Application Name', required: true },
-    { name: 'ssgTeam', type: 'text', label: 'SSG Team', required: true },
-    { name: 'recipientType', type: 'select', label: 'Recipient Type', required: true },
-    { name: 'templateName', type: 'text', label: 'Template Name', required: true },
-    { name: 'sender', type: 'email', label: 'Sender', required: true },
-    { name: 'subject', type: 'text', label: 'Subject', required: true },
-    { name: 'body', type: 'textarea', label: 'Body', required: true },
-    { name: 'autoSend', type: 'boolean', label: 'Auto Send', required: false },
-    { name: 'dataAsAttachment', type: 'boolean', label: 'Data as Attachment', required: false },
+    { name: 'ApplicationName', type: 'text', label: 'Application Name', required: true },
+    { name: 'SsgTeam', type: 'text', label: 'SSG Team', required: true },
+    { name: 'RecipientType', type: 'select', label: 'Recipient Type', required: true },
+    { name: 'TemplateName', type: 'text', label: 'Template Name', required: true },
+    { name: 'Sender', type: 'email', label: 'Sender', required: true },
+    { name: 'Subject', type: 'text', label: 'Subject', required: true },
+    { name: 'Body', type: 'textarea', label: 'Body', required: true },
+    { name: 'AutoSend', type: 'boolean', label: 'Auto Send', required: false },
+    { name: 'DataAsAttachment', type: 'boolean', label: 'Data as Attachment', required: false },
   ];
 
   return (

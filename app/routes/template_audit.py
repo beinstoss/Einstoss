@@ -169,7 +169,7 @@ def search_audit_records():
         template_id = request.args.get('templateId')
         user_id = request.args.get('userId')
         action = request.args.get('action')
-        application_name = request.args.get('applicationName')
+        application_name = request.args.get('ApplicationName')
         days_back = int(request.args.get('days', 30))
         limit = int(request.args.get('limit', 100))
         
@@ -207,7 +207,7 @@ def search_audit_records():
                 'templateId': template_id,
                 'userId': user_id,
                 'action': action,
-                'applicationName': application_name,
+                'ApplicationName': application_name,
                 'daysBack': days_back
             }
         })
