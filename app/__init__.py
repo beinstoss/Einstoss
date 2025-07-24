@@ -23,8 +23,8 @@ def create_app(config_class=Config):
     from app.routes.parameters import parameters_bp
     from app.routes.form_fields import form_fields_bp
     from app.routes.query import query_bp
-    from app.routes.approved_applications import approved_applications_bp
     from app.routes.template_audit import template_audit_bp
+    from app.routes.email_generation import email_generation_bp
     
     app.register_blueprint(auth_bp, url_prefix='/api/auth')
     app.register_blueprint(templates_bp, url_prefix='/api/templates')
@@ -32,7 +32,7 @@ def create_app(config_class=Config):
     app.register_blueprint(parameters_bp, url_prefix='/api/parameters')
     app.register_blueprint(form_fields_bp, url_prefix='/api/form-fields')
     app.register_blueprint(query_bp, url_prefix='/api/query')
-    app.register_blueprint(approved_applications_bp, url_prefix='/api/approved-applications')
     app.register_blueprint(template_audit_bp, url_prefix='/api/audit')
+    app.register_blueprint(email_generation_bp, url_prefix='/api/email')
     
     return app

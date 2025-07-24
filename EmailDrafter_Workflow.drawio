@@ -1,0 +1,321 @@
+<mxfile host="app.diagrams.net" modified="2024-07-24T00:00:00.000Z" agent="5.0" etag="example" version="21.0.0" type="device">
+  <diagram name="EmailDrafter Workflow" id="workflow">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="2336" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Title -->
+        <mxCell id="title" value="EmailDrafter Workflow - Complete System Overview" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1;fontColor=#1f497d;" vertex="1" parent="1">
+          <mxGeometry x="500" y="20" width="654" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Legend -->
+        <mxCell id="legend_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8f9fa;strokeColor=#dee2e6;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="20" y="80" width="200" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="legend_title" value="Legend" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="70" y="90" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="legend_frontend" value="Frontend UI" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1f5fe;strokeColor=#0277bd;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="30" y="130" width="80" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="legend_api" value="REST API" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#7b1fa2;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="120" y="130" width="80" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="legend_service" value="Service Layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#f57c00;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="30" y="165" width="80" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="legend_external" value="External System" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffebee;strokeColor=#d32f2f;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="120" y="165" width="80" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="legend_database" value="Database" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e8;strokeColor=#2e7d32;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="30" y="200" width="80" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="legend_user" value="User Action" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="120" y="200" width="80" height="25" as="geometry" />
+        </mxCell>
+
+        <!-- User Actions -->
+        <mxCell id="user_admin" value="System Administrator" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=3;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="100" width="140" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="user_template_creator" value="Template Creator" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=3;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="480" y="100" width="140" height="60" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="user_api_consumer" value="API Consumer&#xa;(External System)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=3;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1200" y="100" width="140" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Phase 1: System Setup -->
+        <mxCell id="phase1_title" value="Phase 1: System Setup &amp; Configuration" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;fontColor=#1f497d;" vertex="1" parent="1">
+          <mxGeometry x="280" y="200" width="400" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Admin configures applications -->
+        <mxCell id="admin_config" value="Configure&#xa;Applications" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1f5fe;strokeColor=#0277bd;strokeWidth=2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="280" y="250" width="140" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Applications API -->
+        <mxCell id="api_applications" value="Applications API&#xa;(/api/applications)&#xa;&#xa;• All applications (admin)&#xa;• Active applications&#xa;• Accessible applications" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#7b1fa2;strokeWidth=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="480" y="240" width="160" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- AuthService -->
+        <mxCell id="service_auth" value="AuthService&#xa;• Validate permissions&#xa;• Check app status&#xa;• Manage access control" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#f57c00;strokeWidth=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="700" y="240" width="180" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Database -->
+        <mxCell id="db_main" value="PostgreSQL Database&#xa;&#xa;• Applications&#xa;• Templates&#xa;• Parameters&#xa;• EmailGenerationLog&#xa;• TemplateAudit&#xa;• FormFieldConfigurations" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e8;strokeColor=#2e7d32;strokeWidth=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="950" y="200" width="180" height="160" as="geometry" />
+        </mxCell>
+
+        <!-- Admin Parameters Setup -->
+        <mxCell id="admin_params" value="Define System&#xa;Parameters" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1f5fe;strokeColor=#0277bd;strokeWidth=2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="280" y="340" width="140" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Parameters API -->
+        <mxCell id="api_parameters" value="Parameters API&#xa;(/api/parameters)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#7b1fa2;strokeWidth=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="480" y="340" width="160" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- ParameterService -->
+        <mxCell id="service_parameter" value="ParameterService&#xa;• Validate @@parameters&#xa;• Autocomplete support&#xa;• Parameter replacement" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#f57c00;strokeWidth=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="700" y="330" width="180" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Phase 2: Template Management -->
+        <mxCell id="phase2_title" value="Phase 2: Template Creation &amp; Management" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;fontColor=#1f497d;" vertex="1" parent="1">
+          <mxGeometry x="280" y="450" width="400" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Template Creator Frontend -->
+        <mxCell id="frontend_templates" value="Template Management UI&#xa;&#xa;• Create templates&#xa;• Edit templates&#xa;• Parameter validation&#xa;• Preview functionality" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1f5fe;strokeColor=#0277bd;strokeWidth=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="280" y="500" width="160" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Templates API -->
+        <mxCell id="api_templates" value="Templates API&#xa;(/api/templates)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#7b1fa2;strokeWidth=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="480" y="520" width="160" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- AuditService -->
+        <mxCell id="service_audit" value="AuditService&#xa;• Log all changes&#xa;• Track user actions&#xa;• Maintain audit trail" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#f57c00;strokeWidth=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="700" y="510" width="180" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Form Fields Configuration -->
+        <mxCell id="form_fields_config" value="Form Fields API&#xa;(/api/form-fields)&#xa;&#xa;Dynamic form&#xa;configuration per&#xa;application" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#7b1fa2;strokeWidth=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="280" y="640" width="160" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Query Service -->
+        <mxCell id="service_query" value="QueryService&#xa;• Advanced filtering&#xa;• Dynamic queries&#xa;• Export capabilities&#xa;• Pagination support" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#f57c00;strokeWidth=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="480" y="630" width="180" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Phase 3: Email Generation -->
+        <mxCell id="phase3_title" value="Phase 3: Email Generation via API" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;fontColor=#1f497d;" vertex="1" parent="1">
+          <mxGeometry x="280" y="780" width="400" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- API Consumer Request -->
+        <mxCell id="api_request" value="API Request&#xa;POST /api/email/templates/{id}/generate&#xa;&#xa;{&#xa;  &quot;recipients&quot;: [&quot;user@example.com&quot;],&#xa;  &quot;parameters&quot;: {&#xa;    &quot;ClientName&quot;: &quot;John Doe&quot;,&#xa;    &quot;OrderId&quot;: &quot;12345&quot;&#xa;  }&#xa;}" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffebee;strokeColor=#d32f2f;strokeWidth=2;fontSize=10;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1160" y="830" width="220" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- Email Generation API -->
+        <mxCell id="api_email_gen" value="Email Generation API&#xa;(/api/email)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#7b1fa2;strokeWidth=2;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="280" y="860" width="160" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Template Processing Flow -->
+        <mxCell id="process_flow" value="Processing Flow:&#xa;&#xa;1. Validate access permissions&#xa;2. Retrieve template from DB&#xa;3. Process @@parameter substitution&#xa;4. Apply data type formatting&#xa;5. Generate final email content" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#f57c00;strokeWidth=2;fontSize=11;align=left;" vertex="1" parent="1">
+          <mxGeometry x="480" y="820" width="220" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- Parameter Processing Detail -->
+        <mxCell id="param_processing" value="Parameter Processing:&#xa;&#xa;• Replace @@ClientName → &quot;John Doe&quot;&#xa;• Replace @@OrderId → &quot;12345&quot;&#xa;• Use defaults for missing params&#xa;• Format by data type&#xa;• Log all replacements" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#f57c00;strokeWidth=2;fontSize=10;align=left;" vertex="1" parent="1">
+          <mxGeometry x="740" y="820" width="200" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- Outlook Integration -->
+        <mxCell id="outlook_integration" value="Microsoft Outlook Integration" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#1f497d;" vertex="1" parent="1">
+          <mxGeometry x="280" y="980" width="400" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- OutlookService -->
+        <mxCell id="service_outlook" value="OutlookService&#xa;&#xa;• Certificate-based OAuth2&#xa;• Microsoft Graph API&#xa;• Create email drafts&#xa;• Send emails directly&#xa;• Attach data files" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#f57c00;strokeWidth=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="280" y="1020" width="180" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Microsoft Graph API -->
+        <mxCell id="msgraph_api" value="Microsoft Graph API&#xa;&#xa;• Email draft creation&#xa;• Email sending&#xa;• Attachment handling&#xa;• Authentication" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffebee;strokeColor=#d32f2f;strokeWidth=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="520" y="1020" width="160" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Outlook Client -->
+        <mxCell id="outlook_client" value="Microsoft Outlook&#xa;&#xa;📧 Email Draft Created&#xa;🔗 Web Link Provided&#xa;📎 Data Attachments&#xa;✅ Ready to Send" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffebee;strokeColor=#d32f2f;strokeWidth=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="740" y="1020" width="160" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Logging and Monitoring -->
+        <mxCell id="logging_title" value="Logging &amp; Monitoring" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#1f497d;" vertex="1" parent="1">
+          <mxGeometry x="280" y="1160" width="400" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Email Generation Log -->
+        <mxCell id="email_log" value="Email Generation Log&#xa;&#xa;• Track all generation attempts&#xa;• Success/failure status&#xa;• Parameter values used&#xa;• Recipients and timestamps&#xa;• Error messages" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e8;strokeColor=#2e7d32;strokeWidth=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="280" y="1200" width="180" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Template Audit Trail -->
+        <mxCell id="audit_trail" value="Template Audit Trail&#xa;&#xa;• All template changes&#xa;• User activity tracking&#xa;• Field-level change history&#xa;• Administrative oversight" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e8;strokeColor=#2e7d32;strokeWidth=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="520" y="1200" width="180" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Audit API -->
+        <mxCell id="api_audit" value="Audit API&#xa;(/api/audit)&#xa;&#xa;• Audit history&#xa;• User activity reports&#xa;• Statistics &amp; metrics&#xa;• Search capabilities" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#7b1fa2;strokeWidth=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="760" y="1200" width="160" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Security Features -->
+        <mxCell id="security_title" value="Security &amp; Access Control" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#1f497d;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="500" width="300" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Security Features Box -->
+        <mxCell id="security_features" value="🔐 Security Features:&#xa;&#xa;• Application-level access control&#xa;• Role-based permissions (read/write/admin)&#xa;• Application status management&#xa;• Parameter validation &amp; sanitization&#xa;• Comprehensive audit logging&#xa;• Certificate-based OAuth2&#xa;• Input validation on all endpoints&#xa;• User entitlement verification" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f1f8e9;strokeColor=#689f38;strokeWidth=2;fontSize=11;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="540" width="280" height="180" as="geometry" />
+        </mxCell>
+
+        <!-- Data Flow Arrows -->
+        <!-- Phase 1 connections -->
+        <mxCell id="arrow1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#1976d2;" edge="1" parent="1" source="admin_config" target="api_applications">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="arrow2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#1976d2;" edge="1" parent="1" source="api_applications" target="service_auth">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.3;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#1976d2;" edge="1" parent="1" source="service_auth" target="db_main">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#1976d2;" edge="1" parent="1" source="admin_params" target="api_parameters">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#1976d2;" edge="1" parent="1" source="api_parameters" target="service_parameter">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.6;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#1976d2;" edge="1" parent="1" source="service_parameter" target="db_main">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Phase 2 connections -->
+        <mxCell id="arrow7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#7b1fa2;" edge="1" parent="1" source="frontend_templates" target="api_templates">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#7b1fa2;" edge="1" parent="1" source="api_templates" target="service_audit">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.8;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#7b1fa2;" edge="1" parent="1" source="service_audit" target="db_main">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#f57c00;" edge="1" parent="1" source="form_fields_config" target="service_query">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Phase 3 connections -->
+        <mxCell id="arrow11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=3;strokeColor=#d32f2f;" edge="1" parent="1" source="api_request" target="process_flow">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#f57c00;" edge="1" parent="1" source="process_flow" target="api_email_gen">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#f57c00;" edge="1" parent="1" source="process_flow" target="param_processing">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Outlook Integration connections -->
+        <mxCell id="arrow14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#f57c00;" edge="1" parent="1" source="api_email_gen" target="service_outlook">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#d32f2f;" edge="1" parent="1" source="service_outlook" target="msgraph_api">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#d32f2f;" edge="1" parent="1" source="msgraph_api" target="outlook_client">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Logging connections -->
+        <mxCell id="arrow17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#2e7d32;" edge="1" parent="1" source="service_outlook" target="email_log">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#2e7d32;" edge="1" parent="1" source="service_audit" target="audit_trail">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="790" y="650" as="sourcePoint" />
+            <mxPoint x="610" y="1200" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="arrow19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#7b1fa2;" edge="1" parent="1" source="audit_trail" target="api_audit">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- User interaction arrows -->
+        <mxCell id="user_arrow1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#d6b656;dashed=1;" edge="1" parent="1" source="user_admin" target="admin_config">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="user_arrow2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#d6b656;dashed=1;" edge="1" parent="1" source="user_template_creator" target="frontend_templates">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="user_arrow3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#d6b656;dashed=1;" edge="1" parent="1" source="user_api_consumer" target="api_request">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Key Benefits Box -->
+        <mxCell id="benefits_title" value="Key Benefits" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#1f497d;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="780" width="300" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="benefits_box" value="✅ Benefits:&#xa;&#xa;• Centralized email template management&#xa;• Dynamic parameter substitution&#xa;• Multi-application support&#xa;• Role-based access control&#xa;• Comprehensive audit trails&#xa;• Microsoft Outlook integration&#xa;• RESTful API for system integration&#xa;• Scalable and secure architecture&#xa;• No frontend email generation (API-only)&#xa;• Professional email formatting&#xa;• Automated logging and monitoring" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e8;strokeColor=#2e7d32;strokeWidth=2;fontSize=11;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="820" width="280" height="220" as="geometry" />
+        </mxCell>
+
+        <!-- Use Cases Box -->
+        <mxCell id="usecases_title" value="Common Use Cases" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;fontColor=#1f497d;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="1080" width="300" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="usecases_box" value="🎯 Use Cases:&#xa;&#xa;• Risk management alerts&#xa;• Trading notifications&#xa;• Compliance reports&#xa;• Customer communications&#xa;• System status updates&#xa;• Automated reporting&#xa;• Multi-tenant notifications&#xa;• Regulatory communications&#xa;• Business process automation&#xa;• Event-driven messaging" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#f57c00;strokeWidth=2;fontSize=11;align=left;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="1120" width="280" height="180" as="geometry" />
+        </mxCell>
+
+        <!-- Footer -->
+        <mxCell id="footer" value="EmailDrafter System - Complete Workflow Overview | Template-based email generation with parameter substitution, Microsoft Outlook integration, and comprehensive audit logging" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=2;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="280" y="1350" width="1000" height="30" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

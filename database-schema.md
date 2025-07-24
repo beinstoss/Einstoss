@@ -4,7 +4,7 @@ This document outlines the database schema for the Einstoss application, which c
 
 ## Tables Overview
 
-- **ApprovedApplications** - Application approval and governance registry
+- **Applications** - Application registry and management
 - **Parameters** - Global parameters for dynamic content generation
 - **FormFieldConfigurations** - Configuration for dynamic form fields per application
 - **FormFieldOptions** - Options for dropdown/select form fields
@@ -14,25 +14,26 @@ This document outlines the database schema for the Einstoss application, which c
 
 ## Table Schemas
 
-### ApprovedApplications
-*File: app/models/approved_application.py*
+### Applications
+*File: app/models/application.py*
 
 | Column | Type | Constraints | Description |
 |--------|------|-------------|-------------|
-| ApplicationName | String(100) | PRIMARY KEY | Unique application identifier |
-| ApprovedBy | String(200) | NOT NULL | Admin who approved the application |
-| ApprovalTime | DateTime | NOT NULL, DEFAULT utcnow | When application was approved |
-| IsActive | Boolean | NOT NULL, DEFAULT True | Active status (controls visibility) |
+| ApplicationId | String(36) | PRIMARY KEY, DEFAULT uuid4() | Unique application identifier |
+| ApplicationName | String(100) | NOT NULL, UNIQUE, INDEX | Application name |
 | DisplayName | String(200) | NULLABLE | Human-readable application name |
 | Description | Text | NULLABLE | Application description |
+| IsActive | Boolean | NOT NULL, DEFAULT True | Active status (controls visibility) |
+| CreatedBy | String(200) | NOT NULL | Creator identifier |
+| CreationTime | DateTime | NOT NULL, DEFAULT utcnow | Creation timestamp |
 | ModifiedBy | String(200) | NULLABLE | Last modifier identifier |
 | ModifiedTime | DateTime | NULLABLE | Last modification timestamp |
 
 **Purpose:**
-- Controls which applications are available for template creation
-- Only admin users can approve new applications
-- Regular users can only create templates for approved/active applications
-- Provides application governance and controlled rollout capability
+- Registry of all applications integrated with the system
+- Active/inactive status controls application availability
+- Only admin users can manage applications
+- All integrated applications are automatically available for template creation
 
 ### Parameters
 *File: app/models/parameter.py*
@@ -165,7 +166,7 @@ This document outlines the database schema for the Einstoss application, which c
 ## Entity Relationships
 
 ```
-ApprovedApplications (standalone) - Controls application access
+Applications (standalone) - Application registry and management
 
 Parameters (standalone)
 
@@ -192,10 +193,11 @@ Tables use `IsActive` boolean flags for logical deletion rather than physical de
 - `EmailGenerationLog.Recipients` stores recipient email arrays as JSON text
 - `EmailGenerationLog.ParametersUsed` stores parameter values as JSON objects
 
-### Application Isolation and Governance
-- **Application Approval**: Only applications in `ApprovedApplications` with `IsActive=True` are accessible
+### Application Management and Isolation
+- **Application Registry**: All integrated applications are stored in `Applications` table
+- **Active Status Control**: Only applications with `IsActive=True` are accessible for operations
 - **Multi-tenancy**: Form field configurations and templates are isolated by `ApplicationName`
-- **Admin Control**: Only users with `EmailDrafter>admin>true` can approve new applications
+- **Admin Control**: Only users with `EmailDrafter>admin>true` can manage applications
 - **Graceful Deactivation**: Setting `IsActive=False` hides application without data loss
 
 ### Microsoft Graph Integration
